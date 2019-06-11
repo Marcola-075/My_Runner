@@ -19,11 +19,10 @@ int check_death(objs *object)
     return (0);
 }
 
-int analyse_ev(sfRenderWindow *window, sfEvent event, objs *object)
+void analyse_ev(sfRenderWindow *window, sfEvent event, objs *object)
 {
     while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed ||
-            sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+        if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
         if (sfKeyboard_isKeyPressed(sfKeyUp) == sfTrue
             && object->state != DEATH && object->state != WIN
@@ -37,8 +36,12 @@ int analyse_ev(sfRenderWindow *window, sfEvent event, objs *object)
             && object->state != DEATH && object->state != WIN
             && object->state != JUMP)
             object->state = RUN;
+        if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue
+            && object->state != DEATH && object->state != WIN) {
+            object->state = DEATH;
+            sfClock_restart(object->clock);
+        }
     }
-    return (0);
 }
 
 int state_act(objs *object, float sec)

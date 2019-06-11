@@ -23,6 +23,8 @@ SRC	=	window.c		\
 		my_menu.c		\
 		my_txt.c		\
 		destroy.c		\
+		intochar.c		\
+		my_realloc.c		\
 		object.c
 
 OBJ	=	$(SRC:.c=.o)

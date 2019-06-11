@@ -53,6 +53,7 @@ typedef struct objs {
     sfMusic *menu_music;
     sfClock *clock;
     sfText *txtscore;
+    sfText *txtscoretwo;
     float score;
     int state;
     int menustate;
@@ -62,6 +63,7 @@ typedef struct objs {
 struct obj create_object(const char *path, sfVector2f pos, sfIntRect rect);
 int my_strcmp(char const *sone, char const *stwo);
 int my_putstr(char const *str);
+int my_strlen(char const *str);
 obj test_backthree(obj backthree);
 obj test_backfour(obj backfour);
 obj test_backfive(obj backfive);
@@ -112,8 +114,11 @@ sfMusic *menu_music(void);
 sfText *txt_score(void);
 void create_sp_two(objs *object);
 void game_core(sfRenderWindow* window, sfEvent event, objs *object, int *start);
-int analyse_ev(sfRenderWindow *window, sfEvent event, objs *object);
+void analyse_ev(sfRenderWindow *window, sfEvent event, objs *object);
 int state_act(objs *object, float sec);
 objs destroy(objs object);
+char *inttochar(int nb);
+sfText *showscore(float score);
+char *my_realloc(char *str, char *str_two, int i, int y);
 
 #endif

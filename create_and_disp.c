@@ -78,6 +78,7 @@ void display_backgrounds(sfRenderWindow *window, objs *object)
     sfSprite_setTextureRect(object->winsp.obj_sp, object->winsp.rect);
     sfRenderWindow_drawSprite(window, object->winsp.obj_sp, NULL);
     sfRenderWindow_drawText(window, object->txtscore, NULL);
+    sfRenderWindow_drawText(window, object->txtscoretwo, NULL);
     sfRenderWindow_display(window);
     sfRenderWindow_clear(window, sfBlack);
 }

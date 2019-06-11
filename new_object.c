@@ -65,6 +65,8 @@ void game_core(sfRenderWindow* window, sfEvent event, objs *object, int *start)
             object->score = 0;
             (*start) = 0;
         }
+        if (object->score <= 101)
+            object->txtscoretwo = showscore(object->score);
         run(sec, object);
         score_and_game(object);
         sfRenderWindow_clear(window, sfBlack);
